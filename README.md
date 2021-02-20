@@ -24,7 +24,20 @@ git add A
 git status -s
 git status
 git diff
-dit diff --staged
+git diff --staged
+
+git log
+git log --oneline
+git log --stat
+git log --patch = full details
+
+git reset --soft = moves to staging dir
+git reset --mixed = moves to working dir
+git reset --hard = deletes
+
+git checkout -b new_branch
+git merge new_branch
+
 
 command line commands
 
