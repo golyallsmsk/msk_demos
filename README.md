@@ -35,9 +35,15 @@ git reset --soft = moves to staging dir
 git reset --mixed = moves to working dir
 git reset --hard = deletes
 
-git checkout -b new_branch
+git checkout -b new_branch = create new branch
 git merge new_branch
 
+git branch = list all branches
+git checout b1 = change to b1 branch
+git branch -m oldbranch newbranch = rename oldbranch to newbranch
+git branch -d oldbranch = deletes oldbranch
+If commit are not merged it throws error
+git branch -D oldbranch = deletes old branch including commits
 
 command line commands
 
