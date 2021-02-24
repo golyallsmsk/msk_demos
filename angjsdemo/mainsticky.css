@@ -1,0 +1,57 @@
+body {
+    margin: 10px;
+    border: 1px solid red;
+    padding: 10px;
+}
+h4 {
+    color : green;
+}
+
+.boxcontainer {
+    width: 800px;
+    /* height: 800px; */
+    border: 1px dotted red;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.heading {
+    background-color: lightslategray;
+    position: sticky;
+    top : 0px;
+    z-index: 1;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.bluebox {
+    background-color: blue;
+}
+
+.yellowbox {
+    background-color: yellow;
+    position: sticky;
+    top : 24px;
+}
+
+table.header-sticky-scroll > tbody {
+    display: block;
+    height: 150px;
+    overflow: auto;
+}
+
+table.header-sticky-scroll thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table.header-sticky-scroll thead {
+    width: calc( 100% - 1em )
+}
