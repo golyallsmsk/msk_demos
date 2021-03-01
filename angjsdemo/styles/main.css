@@ -1,5 +1,5 @@
 * {
-    border: 1px solid red;
+    border: 0px solid red;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     /* padding-left: 20px; */
 }
 .headingtext {
-    /* padding: 10px; */
+    padding: 10px;
     /* width: inherit; */
 }
 .pclass {
