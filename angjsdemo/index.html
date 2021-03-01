@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="appILOMS">
   <head>
     <meta charset="UTF-8" />
@@ -15,9 +15,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"  ></script>
-    <script src="../angular-1.4.7/angular.min.js"></script>
+
+    <script src="../angular-1.4.7/angular.js"></script>
+    <script src="../angular-1.4.7/angular-messages.js"></script>
+
     <script src="./scripts/main.js"></script>
     <script src="./scripts/jqscripts.js" ></script>
+
     <script src="app/app.js"></script>
     <script src="app/constants/langConstant.js"></script>
     <script src="app/constants/loginConstants.js"></script>
@@ -28,6 +32,7 @@
     <script src="app/controllers/mainController.js"></script>
     <script src="app/controllers/customerController.js"></script>
     <script src="app/controllers/userController.js"></script>
+
   </head>
   <body>
     <h1>Hello World</h1>
@@ -69,5 +74,17 @@
     </div>
       <user-directive></user-directive>
     <user-url-directive></user-url-directive>
+    <div>
+      <form name="testForm">
+        <lavel>Enter text:</lavel>
+        <input type="text" ng-model="testField" required ng-minlength="5" ng-maxlength="20" />
+        <div ng-messages="textForm.testField.$error" role="alert">
+          <div ng-message-exp="'required'">You did not enter you email address</div>
+        </div>
+      </form>
+    </div>
+      <div ng-controller="PromiseController">
+          Promise Controller
+      </div>
   </body>
 </html>
