@@ -11,9 +11,11 @@
       };
     }
     return {
+      bindToController: true,
       controller: ndController,
-      restrict: "E",
+      restrict: "AE",
       template: "Name: {{ user.name }} ",
+      scope: true,
     };
   }
 })();

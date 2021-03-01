@@ -20,15 +20,13 @@
       };
     }
 
-    function link() {}
-
     return {
       bindToController: true,
       controller: userUrlDirectiveController,
       controllerAs: "Ctrl",
-      link: link,
       restrict: "AE",
-      templateUrl: "./scripts/app/directives/UserUrlDirective.html",
+      templateUrl: "appcontent/directives/UserUrlDirective.html",
+      scope: true,
     };
   }
 })();
