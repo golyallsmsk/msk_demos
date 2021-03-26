@@ -1,0 +1,130 @@
+h1 {
+    color : red;
+    background-color: lightgray;
+}
+hr {
+    color: red;
+}
+.toolbar {
+    display: inline-block;
+    width: 100%;
+    position:fixed;
+    top:0px;
+    z-index: 1;
+    margin-left:50px;
+}
+
+.section {
+    border: 2px solid red;
+    margin: 15px 0px;
+}
+.section1 {
+    position: relative;
+}
+.section2 {
+    position: relative;
+    /* top: 0px; */
+}
+.heading {
+    background-color: lightblue;
+    height: 50px;
+}
+.heading1 {
+    position: relative;
+    top: 30px;
+    /* left: 0px; */
+}
+.heading2 {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    /* display: block; */
+    /* left: 0px; */
+}
+
+.heading3 {
+    position: fixed;
+    width: 100%;
+    top: 30px;
+    margin-left: 50px;
+    /* left: 0px; */
+}
+.heading4 {
+    position: sticky;
+    top: 30px;
+    left: 0px;
+}
+.heading5 {
+    position: static;
+    top:30px;
+    /* left: 30px; */
+}
+.heading5fixed {
+    display: i;
+    width: 100%;
+    position: fixed;
+}
+.heading5dummy {
+    display:inline-block;
+    height: 200%;
+    visibility: hidden;
+}
+.contentavon {
+    background-color: lightgray;
+    margin: 3px 0px;
+}
+
+
+
+
+
+/*
+@media screen {
+}
+.toolbar::after {
+    content: " - Remember this";
+    background-color: yellow;
+    color: red;
+}
+.tdfheading1 {
+    border: 5px solid red;
+    background-color: lightblue;
+    /* position: sticky; */
+    /* top:30px;
+    margin: auto;
+    padding-right: 15px;
+    margin-right: 15px;
+    width: 94%;
+    max-width: 1110px; */
+/* }
+@media screen and (max-width: 576px) {
+    .tdfheading1 { */
+        /* border: 5px double red; */
+        /* padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .tdfheading1 { */
+        /* border: 5px solid lightgreen; */
+        /* width: 510px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .tdfheading1 { */
+        /* border: 1px solid lightpink; */
+
+        /* border: 1px solid green; */
+        /* width: 930px;
+    }
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .tdfheading1 { */
+        /* border: 1px solid blue; */
+        /* width: 1110px;
+    }
+} */
+
+/* width: "1170px"; */

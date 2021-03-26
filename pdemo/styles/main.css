@@ -1,0 +1,40 @@
+/* body {
+    margin: 10px;
+}
+
+h1 {
+     font-size : 2em;
+}*/
+/* h2 {
+    margin-bottom: 0.5rem;
+} */
+header h1 {
+    margin-bottom: 0.1rem;
+}
+ header p {
+    font-size : 1rem;
+    margin-bottom: .5rem;
+}
+
+ul li {
+    /* width: 100%; */
+    /* display: inline-block; */
+    float: left;
+    left: 10px;
+    /* float: left;
+    left: 100px; */
+
+}
+/*
+ul li a {
+    display: block;
+    text-decoration: none;
+}  */
+
+.tableFixHead          { overflow: auto; height: 500px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%}
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
