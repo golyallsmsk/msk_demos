@@ -90,9 +90,20 @@ function handleScroll() {
 // console.log("Added heading5fixed");
 // console.log("Removed heading5fixed");
 // tmp.style.visiblity = "hidden";
-// console.log(
-//   window.pageYOffset,
-//   heading5.sectionTop - heading5.toolbarHeight,
-//   heading5.sectionTop,
-//   heading5.toolbarHeight
-// );
+
+// tmp.style.height = 2 * heading5.headerHeight;
+// tmp.style.visibility = "hidden";
+// tmptoolbar.classList.remove(".toolbar");
+// console.log(heading5);
+
+// const parentElement = document.querySelector('.parent-element');
+// const fixedElement = document.querySelector('.fixed-element');
+
+// window.addEventListener('load', changeFixedElementWidth);
+// window.addEventListener('resize', changeFixedElementWidth);
+
+// function changeFixedElementWidth() {
+//   const parentElementWidth = parentElement.getBoundingClientRect().width;
+//   fixedElement.style.width = parentElementWidth + 'px';
+// }
+

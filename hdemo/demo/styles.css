@@ -1,3 +1,4 @@
+
 h1 {
     color : red;
     background-color: lightgray;
@@ -11,7 +12,22 @@ hr {
     position:fixed;
     top:0px;
     z-index: 1;
-    margin-left:50px;
+    /* margin-left:50px; */
+    background-color: lightgray;
+    opacity: 1;
+}
+
+.toolbardummy {
+    visibility: hidden;
+    position: relative;
+}
+
+.debug {
+    position: fixed;
+    bottom:20px;
+    right: 20px;
+    background-color: yellow;
+
 }
 
 .section {
@@ -23,7 +39,6 @@ hr {
 }
 .section2 {
     position: relative;
-    /* top: 0px; */
 }
 .heading {
     background-color: lightblue;
@@ -32,22 +47,19 @@ hr {
 .heading1 {
     position: relative;
     top: 30px;
-    /* left: 0px; */
 }
 .heading2 {
     position: absolute;
     top: 30px;
     width: 100%;
     /* display: block; */
-    /* left: 0px; */
 }
 
 .heading3 {
-    position: fixed;
+    position: relative;
     width: 100%;
-    top: 30px;
-    margin-left: 50px;
-    /* left: 0px; */
+    /* top: 30px; */
+    /* margin-left: 50px; */
 }
 .heading4 {
     position: sticky;
@@ -57,26 +69,29 @@ hr {
 .heading5 {
     position: static;
     top:30px;
-    /* left: 30px; */
 }
 .heading5fixed {
-    display: i;
-    width: 100%;
+    display: inline-block;
+    /* width: 100vw; */
     position: fixed;
 }
 .heading5dummy {
-    display:inline-block;
-    height: 200%;
     visibility: hidden;
+}
+.dummyheading5fixed {
+    display:none;
 }
 .contentavon {
     background-color: lightgray;
     margin: 3px 0px;
 }
 
-
-
-
+    /* display:inline-block; */
+    /* height: 200%; */
+    /* // tmp.classList.add("heading5dummy");
+    // tmp.classList.remove("dummyheading5fixed");
+    // tmp.classList.remove("heading5dummy");
+    // tmp.classList.add("dummyheading5fixed"); */
 
 /*
 @media screen {
