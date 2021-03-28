@@ -7,18 +7,18 @@ let homemenubar = document.querySelector(".homemenubar");
 
 // Fixed Heading DOM Elements
 const fixedHeadings = document.querySelectorAll(".heading5");
+
 const dummyFixedHeadings = [];
 fixedHeadings.forEach((node) => {
   dummyFixedHeadings.push(insertDummyHeading(node));
 });
 
 
-(function loadFixedHeadings() {
-
+function loadFixedHeadings() {
   fixedHeadings.forEach((node) => {
     node.style.width = node.parentNode.clientWidth + "px";
   });
-})();
+};
 
 
 // insertDummyHeading
@@ -38,22 +38,15 @@ function insertDummyHeading(headingElement) {
 function handleResize() {
   homemenubar.style.width = homemenubar.nextSibling.clientWidth + "px";
 
-  // document.querySelectorAll(".heading5")
-  // heading.style.width = heading.parentNode.clientWidth + "px";
+  loadFixedHeadings();
 
   document.querySelector(".heading4").style.top =
     homemenubar.offsetHeight + "px";
-
-  // headingprops.sectionTop = heading.parentNode.offsetTop;
-  // headingprops.sectionHeight = heading.parentNode.offsetHeight;
-  // headingprops.headerHeight = heading.offsetHeight;
-  // headingprops.sectionWidth = heading.offsetWidth;
 }
 
 // handle Scroll
 function handleScroll() {
   let scrollTop = window.pageYOffset;
-
 
   // debug(headingprops);
 
@@ -72,8 +65,7 @@ function handleScroll() {
       headingprops.headerHeight = node.offsetHeight;
       headingprops.sectionWidth = node.offsetWidth;
       console.log(headingprops);
-    }
-    else {
+    } else {
       node.classList.remove("heading5fixed");
       node.style.top = "";
     }
@@ -92,12 +84,11 @@ function handleScroll() {
     }
   });
 
-  if (heading === null || dummyheading === null ) return;
+  if (heading === null || dummyheading === null) return;
 
   // console.log(scrollTop, headingprops);
 
-  if (shouldFix(scrollTop, headingprops))
-  {
+  if (shouldFix(scrollTop, headingprops)) {
     dummyheading.classList.remove("heading5dummy");
     dummyheading.classList.add("heading5dummyfixed");
     dummyheading.style.height =
