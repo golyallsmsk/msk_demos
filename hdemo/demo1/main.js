@@ -2,39 +2,76 @@ window.addEventListener("scroll", handleScroll);
 window.addEventListener("resize", handleResize);
 window.addEventListener("load", handleResize);
 
-let toolbar = document.querySelector(".toolbar");
-let el5 = document.querySelector(".heading5");
-let heading5 = {};
+// Home Menu bar fixed
+let homemenubar = document.querySelector(".homemenubar");
+insertDummyMenubar();
 
-const tmptoolbar = toolbar.cloneNode(true);
-const tmp = el5.cloneNode(false);
+function insertDummyMenubar() {
+  const dummymenubar = homemenubar.cloneNode(true);
+  dummymenubar.classList.add("dummymenubar");
+  homemenubar.parentNode.insertBefore(dummymenubar, homemenubar.nextSibling);
+}
+// Heading Fixed
+let heading = document.querySelector(".heading5");
+const dummyheading = insertDummyHeading(heading, homemenubar.offsetHeight);
 
-tmptoolbar.classList.add("toolbardummy");
-console.log('Container Width : ', toolbar.parentNode.offsetWidth);
-toolbar.style.width = toolbar.parentNode.clientWidth + "px";
-toolbar.parentNode.insertBefore(tmptoolbar, toolbar.nextSibling);
+function insertDummyHeading(headingElement, homemenubarHeight) {
+  const dummyheading = headingElement.cloneNode(true);
+  dummyheading.classList.add("heading5dummy");
+
+  headingElement.parentNode.insertBefore(
+    dummyheading,
+    headingElement.nextSibling
+  );
+  return dummyheading;
+}
+
+let headingprops = {};
+headingprops.toolbarHeight = homemenubar.offsetHeight;
+headingprops.sectionTop = heading.parentNode.offsetTop;
+headingprops.sectionHeight = heading.parentNode.offsetHeight;
+headingprops.headerHeight = heading.offsetHeight;
+headingprops.sectionWidth = heading.offsetWidth;
 
 function handleResize() {
-  heading5.toolbarHeight = toolbar.offsetHeight;
-  heading5.sectionTop = el5.parentNode.offsetTop;
-  heading5.sectionHeight = el5.parentNode.offsetHeight;
-  heading5.headerHeight = el5.offsetHeight;
-  heading5.sectionWidth = el5.offsetWidth;
+  homemenubar.style.width = homemenubar.nextSibling.clientWidth + "px";
 
+  heading.style.width = heading.parentNode.clientWidth + "px";
 
-  tmp.classList.add("heading5dummy");
-  tmp.style.height = toolbar.toolbarHeight + el5.headerHeight;
-  tmp.style.display = "none";
-  el5.parentNode.insertBefore(tmp, el5.nextSibling);
-
-  el5.style.top = heading5.toolbarHeight + "px";
-  el5.style.width = heading5.sectionWidth + "px";
-
-  toolbar.style.width = toolbar.parentNode.clientWidth + "px";
-  console.log('HandleResize : ', toolbar.parentNode.clientWidth);
+  headingprops.sectionTop = heading.parentNode.offsetTop;
+  headingprops.sectionHeight = heading.parentNode.offsetHeight;
+  headingprops.headerHeight = heading.offsetHeight;
+  headingprops.sectionWidth = heading.offsetWidth;
 }
 
 function handleScroll() {
+  // debug(headingprops);
+
+  let fixtop = headingprops.sectionTop - headingprops.toolbarHeight;
+  let fixbottom =
+    headingprops.sectionTop +
+    headingprops.sectionHeight -
+    headingprops.headerHeight -
+    headingprops.toolbarHeight;
+
+  if (window.pageYOffset > fixtop && window.pageYOffset < fixbottom) {
+    dummyheading.classList.remove("heading5dummy");
+    dummyheading.classList.add("heading5dummyfixed");
+    dummyheading.style.height =
+      headingprops.toolbarHeight + headingprops.headerHeight + 10 + "px";
+    heading.classList.add("heading5fixed");
+    heading.style.top = headingprops.toolbarHeight + "px";
+    heading.style.width =
+      heading.parentNode.getBoundingClientRect().width + "px" + "px";
+  } else {
+    heading.classList.remove("heading5fixed");
+    heading.style.top = "";
+    dummyheading.classList.add("heading5dummy");
+    dummyheading.classList.remove("heading5dummyfixed");
+  }
+}
+
+function debug(heading5) {
   console.log(
     window.pageYOffset,
     heading5.sectionTop - heading5.toolbarHeight,
@@ -54,32 +91,8 @@ function handleScroll() {
   // }<br>`;
   // debug += `heading5.sectionTop + heading5.sectionHeight : ${
   //   heading5.sectionTop + heading5.sectionHeight
-  // }<br>`;
-
-  let fixtop = heading5.sectionTop - heading5.toolbarHeight;
-  let fixbottom =
-    heading5.sectionTop +
-    heading5.sectionHeight -
-    heading5.headerHeight -
-    heading5.toolbarHeight;
-
-  // debug += `Window PageYOffset : ${window.pageYOffset}<br>`;
+  // }<br>`;  // debug += `Window PageYOffset : ${window.pageYOffset}<br>`;
   // debug += `fixtop : ${fixtop}<br>`;
   // debug += `fixbottom : ${fixbottom}<br>`;
   document.getElementById("debug").innerHTML = debug;
-  // if (window.pageYOffset > fixtop && window.pageYOffset + heading5.toolbarHeight + heading5.headerHeight < fixbottom ) {
-  if (window.pageYOffset > fixtop && window.pageYOffset < fixbottom) {
-    el5.classList.add("heading5fixed");
-    el5.style.top = heading5.toolbarHeight + "px";
-    el5.style.width = heading5.sectionWidth + "px";
-  } else {
-    el5.classList.remove("heading5fixed");
-    el5.style.top = "";
-    tmp.style.display = "none";
-  }
 }
-
-// function changeFixedElementWidth() {
-//   const parentElementWidth = parentElement.getBoundingClientRect().width;
-//   el5.style.width = parentElementWidth + 'px';
-// }

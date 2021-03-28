@@ -107,3 +107,18 @@ function handleScroll() {
 //   fixedElement.style.width = parentElementWidth + 'px';
 // }
 
+// function changeFixedElementWidth() {
+//   const parentElementWidth = parentElement.getBoundingClientRect().width;
+//   el5.style.width = parentElementWidth + 'px';
+// }
+// qmprops.scrollTop = 0;
+
+// console.log('Container Width : ', toolbar.parentNode.offsetWidth);
+
+// console.log('HandleResize : ', toolbar.parentNode.clientWidth);
+function updateHeading() {
+  heading.style.top = heading.toolbarHeight + "px";
+  heading.style.width = heading.sectionWidth + "px";
+}
+// heading.style.width = heading.parentNode.getBoundingClientRect().width + "px";
+style = "position: sticky; top: 0px;";
