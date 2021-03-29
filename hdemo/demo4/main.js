@@ -1,4 +1,3 @@
-"use strict";
 window.addEventListener("scroll", handleScroll);
 window.addEventListener("resize", handleResize);
 window.addEventListener("load", handleResize);
@@ -49,55 +48,41 @@ function handleResize() {
 function handleScroll() {
   let scrollTop = window.pageYOffset;
 
-
+  // debug(headingprops);
 
   const headingprops = {};
   let heading = null;
   let dummyheading = null;
 
-  headingprops.scrollTop = scrollTop;
-  headingprops.toolbarHeight = homemenubar.offsetHeight;
-
-  // scrollTop + headingprops.toolbarHeight > headingprops.sectionTop &&
-  // scrollTop + headingprops.toolbarHeight <
-  //   headingprops.sectionTop +
-  //     headingprops.sectionHeight -
-  //     headingprops.headerHeight
-
-  fixedHeadings.forEach((node, index) => {
+  fixedHeadings.forEach((node) => {
     if (
-      scrollTop + homemenubar.offsetHeight > node.parentNode.offsetTop &&
-      scrollTop + homemenubar.offsetHeight < node.parentNode.offsetTop + node.parentNode.offsetHeight
+      scrollTop > node.parentNode.offsetTop &&
+      scrollTop < node.parentNode.offsetTop + node.parentNode.offsetHeight
     ) {
       heading = node;
 
-      console.log(node.nextElementSibling);
-      dummyheading = node.nextElementSibling;
-
+      headingprops.toolbarHeight = homemenubar.offsetHeight;
       headingprops.sectionTop = node.parentNode.offsetTop;
       headingprops.sectionHeight = node.parentNode.offsetHeight;
-      headingprops.headerHeight = index === 0 ? node.offsetHeight : 0;
+      headingprops.headerHeight = node.offsetHeight;
       headingprops.sectionWidth = node.offsetWidth;
     } else {
       node.classList.remove("heading5fixed");
       node.style.top = "";
-
-      node.nextElementSibling.classList.add("heading5dummy");
-      node.nextElementSibling.classList.remove("heading5dummyfixed");
     }
   });
 
-  // dummyFixedHeadings.forEach((node) => {
-  //   if (
-  //     scrollTop + homemenubar.offsetHeight > node.parentNode.offsetTop &&
-  //     scrollTop + homemenubar.offsetHeight < node.parentNode.offsetTop + node.parentNode.offsetHeight
-  //   ) {
-  //     dummyheading = node;
-  //   } else {
-  //     node.classList.add("heading5dummy");
-  //     node.classList.remove("heading5dummyfixed");
-  //   }
-  // });
+  dummyFixedHeadings.forEach((node) => {
+    if (
+      scrollTop > node.parentNode.offsetTop &&
+      scrollTop < node.parentNode.offsetTop + node.parentNode.offsetHeight
+    ) {
+      dummyheading = node;
+    } else {
+      node.classList.add("heading5dummy");
+      node.classList.remove("heading5dummyfixed");
+    }
+  });
 
   let qmfixed = null;
   qmElements.forEach((node) => {
@@ -106,26 +91,19 @@ function handleScroll() {
       scrollTop < node.parentNode.offsetTop + node.parentNode.offsetHeight
     ) {
       qmfixed = node;
-      headingprops.qmfixedSectionTop = node.parentNode.offsetTop;
-      headingprops.qmfixedSectionHeight = node.parentNode.offsetHeight;
-      headingprops.qmfixedHeight = node.offsetHeight;
+      headingprops.qmfixedTop = node.parentNode.offsetTop;
+      headingprops.qmfixedHeight = node.parentNode.offsetHeight;
     } else {
       node.style.top = "";
       node.classList.remove("qmclassfixed");
     }
   });
 
-
-  // scrollTop + headingprops.toolbarHeight + headingprops.headerHeight <
-  // headingprops.qmfixedSectionTop +
-  //   headingprops.qmfixedSectionHeight - headingprops.qmfixedHeight
-
   let dummyQmFixed = null;
   dummyQMElements.forEach((node) => {
-    console.log(node.parentNode.offsetTop, node.parentNode.offsetHeight, node.offsetHeight);
     if (
-      scrollTop  > node.parentNode.offsetTop &&
-      scrollTop  < node.parentNode.offsetTop + node.parentNode.offsetHeight
+      scrollTop + homemenubar.offsetHeight > node.parentNode.offsetTop &&
+      scrollTop + homemenubar.offsetHeight < node.parentNode.offsetTop + node.parentNode.offsetHeight
     ) {
       dummyQmFixed = node;
     } else {
@@ -134,32 +112,25 @@ function handleScroll() {
     }
   });
 
-  // console.log(headingprops);
-  debug(headingprops);
+  console.log(headingprops);
   if (heading === null || dummyheading === null) return;
 
   // console.log(scrollTop, headingprops);
 
-  if (shouldFix(scrollTop, headingprops))
-  {
+  if (shouldFix(scrollTop, headingprops)) {
     dummyheading.classList.remove("heading5dummy");
     dummyheading.classList.add("heading5dummyfixed");
     dummyheading.style.height =
       headingprops.toolbarHeight + headingprops.headerHeight + "px";
-//  +
+
     heading.classList.add("heading5fixed");
     heading.style.top = headingprops.toolbarHeight + "px";
     heading.style.width =
       heading.parentNode.getBoundingClientRect().width + "px" + "px";
   }
-   else {
-    heading.classList.remove("heading5fixed");
-    heading.style.top = "";
-    dummyheading.classList.add("heading5dummy");
-    dummyheading.classList.remove("heading5dummyfixed");
-  }
-
-
+  //  else {
+  //   // dummyqmfixed
+  // }&&
   if (qmfixed !== null &&  shouldQMFix(scrollTop, headingprops)) {
     dummyQmFixed.classList.remove("qmclassdummy");
     dummyQmFixed.classList.add("qmclassdummyfixed");
@@ -192,13 +163,12 @@ function shouldFix(scrollTop, headingprops) {
 }
 
 function shouldQMFix(scrollTop, headingprops) {
-
   return (
-    scrollTop + headingprops.toolbarHeight > headingprops.qmfixedSectionTop &&
-    scrollTop + headingprops.toolbarHeight + headingprops.headerHeight <
-      headingprops.qmfixedSectionTop +
-        headingprops.qmfixedSectionHeight - headingprops.qmfixedHeight
-        // headingprops.headerHeight - headingprops.qmfixedHeight
+    scrollTop + headingprops.toolbarHeight > headingprops.sectionTop &&
+    scrollTop + headingprops.toolbarHeight <
+      headingprops.sectionTop +
+        headingprops.sectionHeight -
+        headingprops.headerHeight - headingprops.qmfixedHeight
   );
 }
 
@@ -218,21 +188,13 @@ function debug(heading5) {
   //   heading5.toolbarHeight
   // );
   let debug = "Debug<br>";
+  debug += `heading5.toolbarHeight : ${heading5.toolbarHeight}<br>`;
   // debug += `window.pageYOffset + heading5.toolbarHeight : ${
   //   window.pageYOffset + heading5.toolbarHeight
   // }<br>`;
-  // scrollTop > node.parentNode.offsetTop &&
-  // scrollTop < node.parentNode.offsetTop + node.parentNode.offsetHeight
-  debug += `scrollTop : ${heading5.scrollTop}<br>`;
-  debug += `toolbarHeight : ${heading5.toolbarHeight}<br>`;
-  debug += `fixTop : ${heading5.scrollTop + heading5.toolbarHeight} > ${heading5.sectionTop} <br>`;
-  debug += `fixBottom : ${heading5.scrollTop + heading5.toolbarHeight} < ${heading5.sectionTop + heading5.sectionHeight -heading5.headerHeight } <br>`;
-  debug += `sectionTop : ${heading5.sectionTop}<br>`;
-  debug += `sectionHeight : ${heading5.sectionHeight}<br>`;
-  debug += `headerHeight : ${heading5.headerHeight}<br>`;
-  debug += `qmfixedSectionTop : ${heading5.qmfixedSectionTop}<br>`;
-  debug += `qmfixedSectionHeight : ${heading5.qmfixedSectionHeight}<br>`;
-  debug += `qmfixedHeight : ${heading5.qmfixedHeight}<br>`;
+  debug += `heading5.sectionTop : ${heading5.sectionTop}<br>`;
+  debug += `heading5.sectionHeight : ${heading5.sectionHeight}<br>`;
+  debug += `heading5.headerHeight : ${heading5.headerHeight}<br>`;
   // debug += `heading5.sectionTop - heading5.toolbarHeight : ${
   //   heading5.sectionTop - heading5.toolbarHeight
   // }<br>`;
