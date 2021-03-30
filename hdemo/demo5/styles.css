@@ -1,0 +1,125 @@
+ body {
+  background-color: lightgoldenrodyellow;
+}
+h1 {
+  color: red;
+  background-color: lightgray;
+}
+hr {
+  color: red;
+}
+.homemenubar {
+  display: inline-block;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  /* margin-left:50px; */
+   background-color: lightgray;
+  opacity: 1;
+}
+
+.dummymenubar {
+  visibility: hidden;
+  position: relative;
+}
+
+.debug {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: yellow;
+}
+
+.section {
+  border: 2px solid red;
+  margin: 15px 0px;
+}
+.section1 {
+  position: relative;
+}
+.section2 {
+  position: relative;
+}
+.heading {
+  background-color: lightblue;
+  min-height: 50px;
+}
+.heading1 {
+  position: relative;
+  top: 30px;
+}
+.heading2 {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  /* display: block; */
+ }
+
+.heading3 {
+  position: relative;
+  width: 100%;
+  /* top: 30px; */
+  /* margin-left: 50px; */
+ }
+.heading4 {
+  position: sticky;
+  top: 30px;
+  left: 0px;
+  z-index:10;
+}
+.heading5 {
+  position: relative;
+  margin-left: 50px;
+}
+.heading5fixed {
+  display: inline-block;
+  /* width: 100vw; */
+  position: fixed;
+  z-index: 10;
+}
+.heading5dummy {
+  display: none;
+}
+.heading5dummyfixed {
+  top: 0px;
+  display: block;
+  position: static;
+  visibility: hidden;
+}
+
+.qmclass {
+  background-color: lightgreen;
+  margin-left: 0px;
+  position: sticky;
+  top : 0;
+  z-index:9;
+}
+
+.qmclassfixed {
+  background-color: lightgreen;
+  position: fixed;
+  z-index: 9;
+}
+
+.qmclassdummy {
+   background-color: lightgreen;
+  top: 0px;
+  display: block;
+  position: static;
+  visibility: hidden;
+ display: none;
+}
+
+.qmclassdummyfixed {
+  top: 0px;
+  display: block;
+  position: static;
+  visibility: hidden;
+}
+
+.contentavon {
+  background-color: lightgray;
+  margin: 3px 0px;
+}
+
