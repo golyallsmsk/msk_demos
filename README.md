@@ -49,3 +49,10 @@ command line commands
 
 copy con file1.txt = to create a new file
 del file1.txt = to delete file1.txt
+
+By taking action.
+By coding,
+writing,
+designing,
+discussing,
+and defending the open Web.

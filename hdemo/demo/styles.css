@@ -1,4 +1,6 @@
-
+body {
+    background-color: lightyellow;
+}
 h1 {
     color : red;
     background-color: lightgray;
